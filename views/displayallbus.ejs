@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+   
+    <link rel="stylesheet" href="/stylesheets/my.css"/>
+</head>
+<body>
+
+  <% if(status==false) {%>
+    <h2><%= data %></h2>
+    <% } else { %>
+
+    <div class="relative overflow-x-auto">
+    <div class="displayBox">
+    <div style="font-size: 32px;font-weight: bold;"> List Of Buses</div></div>
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xl text-gray-700 uppercase bg-burlywood dark:bg-burlywood dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-5 py-3">
+                        BUS ID
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        BUS NAME
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        BUS NUMBER
+                    </th>
+                    <th scope="col" class="px-10 py-3">
+                        SOURCE
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        DESTINATION
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        DISTANCE
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        FARE
+                    </th>
+                    <th scope="col" class="px-8 py-3">
+                        DAYS
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        PICTURE
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map((item)=> { %>
+         <tr>
+            <td scope="col" class="px-7 py-3">
+                <%= item.busid %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+             <strong>   <%= item.busname %> </strong><br>
+                <%= item.busmodelname %><br>
+                <%= item.bustypename %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+                <%= item.busnumber %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+              <strong>  <%= item.sourcestatename %></strong><br>
+                <%= item.sourcecityname %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+             <strong>   <%= item.destinationstatename %> </strong><br>
+                <%= item.destinationcityname %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+                <%=  item.distance %>
+                
+            </td >
+            <td scope="col" class="px-7 py-3">
+                
+                <%= item.fare %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+                <%=item.days %>  
+                
+            </td>
+            <td scope="col" class="px-7 py-3">
+                
+               <img src="/images/<%= item.picture %>" width="60" style="border-radius: 20px;">
+            </td>
+         </tr>
+            <%    }) %>
+            </tbody>
+        </table>
+        <%    } %>
+  
+ </div>   
+</body>
+</html>  

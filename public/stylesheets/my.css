@@ -1,0 +1,211 @@
+.bigContainer{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: burlywood;
+    width: 100%;
+   
+    
+}
+.modalContainer{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: burlywood;
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background:aliceblue;
+    
+}
+.modcontainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: aliceblue;
+    
+    
+}
+.headingBox{
+    display: flex;
+    width: 100%;
+    height: 35px;
+    padding: 10px;
+    background: chartreuse;
+    margin: 10px;
+    margin-top: 30px;
+    
+}
+.headingText{
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 1;
+    padding: 1px;
+    
+}
+.firstBox{
+    display: flex;
+    width: 25%;
+    height: 145px;
+    padding: 8px;
+    padding-left: 60px;
+    background: chartreuse;
+    margin: 30px;
+    margin-left: 95px;
+    
+}
+.secondBox{
+    display: flex;
+    width: 25%;
+    height: 145px;
+    padding: 10px;
+    padding-left: 60px;
+    background: chartreuse;
+    margin: 30px;
+    margin-left: 95px;
+    
+}
+.thirdBox{
+    display: flex;
+    width: 22.1%;
+    height: 145px;
+    padding: 10px;
+    padding-left: 60px;
+    background: chartreuse;
+    margin: 10px;
+    position: absolute;
+    top: 220px;
+    left:850px;
+}
+.fourthBox{
+    display: flex;
+    width: 22.1%;
+    height: 145px;
+    padding: 10px;
+    padding-left: 60px;
+    background: chartreuse;
+    margin: 10px;
+    position: absolute;
+    top: 395px;
+    left:850px;
+}
+.mainContainer{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: burlywood;
+    height: 100%;
+   width: 100%;
+    
+}
+
+.displayBox{
+    display: flex;
+    width: 96%;
+    height: 60px;
+    padding: 7px;
+    background: chartreuse;
+    margin: 20px;
+    padding-left: 18px;
+}
+.sumbitBox{
+    display: flex;
+     margin: 10px;
+    position: absolute;
+    top: 545px;
+    left:990px;
+}
+.updateBox{
+
+    display: flex;
+    width: 98%;
+    height: 60px;
+    padding: 7px;
+    background: chartreuse;
+    margin: 10px;
+    padding-left: 10px;
+    
+}
+.sumBox{
+    display: flex;
+     margin: 10px;
+    position: absolute;
+    top: 550px;
+    left:400px;
+}
+.closeBox{
+    display: flex;
+     margin: 10px;
+    position: absolute;
+    top: 550px;
+    left:600px;
+}
+.modal-header{
+    display: flex;
+     margin: 4px;
+    position: absolute;
+    right:12px;
+    top:5px
+}
+#deletemodal{
+    
+    
+    position: absolute;
+    left:350px;
+    top:250px;
+}
+.pic{
+    
+    display: flex;
+    
+    align-content: center;
+    position: relative;
+    padding-left: 7px;
+
+}
+.uplPic{
+    
+    display: flex;
+    
+    align-content: center;
+    position: relative;
+    padding-left: 30px;
+    padding-top: 50px;
+    width: 50%;
+    height: 60%;
+}
+
+#picturedialog{
+    
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 700px;
+
+}
+.button{
+    
+    display: flex;
+    
+    align-content: center;
+    position: relative;
+    padding-left: 410px;
+    
+    
+}
+.days{
+    
+   
+    position: relative;
+    padding-left: 10px;
+    margin-left: 20px;
+    
+}

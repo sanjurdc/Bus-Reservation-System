@@ -1,0 +1,210 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+  
+    <link rel="stylesheet" href="/stylesheets/my.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/javascripts/project.js"></script>
+  </head>
+  <body>
+    
+      <div class="bigContainer">
+        
+                          <div class=" md:col-span-5  mt-4 ">
+                            <p style="font-size: 32px;font-weight: bold; background-color:wheat;padding-left: 12px;"> Bus Interface</p>
+                    <form action="/bus/bus_interface" method="POST"  enctype="multipart/form-data">
+                    
+                        <div class="container">
+                          <div class="grid grid-cols-6  ">
+                            <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-5 py-2">
+                              <label for="stateid" class="block text-sm font-medium text-gray-700"> State </label>
+                              <select name="stateid" id="stateid" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                             
+                            </div>
+              
+                            <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-4 py-2">
+                              <label for="cityid" class="block text-sm font-medium text-gray-700"> City </label>
+                              <select name="cityid" id="cityid" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                            </div>
+              
+                            <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-4 py-2">
+                              <label for="bustypeid" class="block text-sm font-medium text-gray-700">Bus Type</label>
+                              <select name="bustypeid" id="bustypeid" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                            </div>
+              
+                            <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-5 py-1">
+                              <label for="busnames" class="block text-sm font-medium text-gray-700">Bus Name</label>
+                              <select name="busnames" id="busnames" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                               
+                            </div>
+                              
+                            <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-4 py-2">
+                              <label for="busmodel" class="block text-sm font-medium text-gray-700">Bus Model</label>
+                              <select name="busmodel" id="busmodel" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-5 py-1">
+                              <label for="busnumber" class="block text-sm font-medium text-gray-700">Bus Number</label>
+                              <input type="text" name="busnumber" id="busnumber" autocomplete="street-address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+              
+                            <div class="col-span-6 sm:col-span-3 px-5 ">
+                              <label for="sourcestate" class="block text-sm font-medium text-gray-700">Source State</label>
+                              <select name="sourcestate" id="sourcestate" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                            </div>
+              
+                            <div class="col-span-6 sm:col-span-3 px-5 ">
+                              <label for="sourcecity" class="block text-sm font-medium text-gray-700">Source City</label>
+                             <select name="sourcecity" id="sourcecity" style="width: 100%;">
+                              <option value=""disable selected>Choose Your Option</option>
+                            </select>
+                           </div>
+              
+                            <div class="col-span-6 sm:col-span-3 px-5 py-3">
+                              <label for="destinationstate" class="block text-sm font-medium text-gray-700">Destination State</label>
+                              <select name="destinationstate" id="destinationstate" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                            </div>
+
+                            <div class="col-span-6 sm:col-span-3 px-5 py-3">
+                              <label for="destinationcity" class="block text-sm font-medium text-gray-700">Destination City</label>
+                              <select name="destinationcity" id="destinationcity" style="width: 100%;">
+                                <option value=""disable selected>Choose Your Option</option>
+                              </select>
+                               </div>
+                            <div class="col-span-6 sm:col-span-4 lg:col-span-1 pl-5 " style="width: 100%;">
+                              <label for="distance" class="block text-sm font-medium text-gray-700">Distance</label>
+                              <input type="text" name="distance" id="distance" autocomplete="address-level1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                            <div class="col-span-6 sm:col-span-4 lg:col-span-1 pl-5 " style="width: 100%;">
+                              <label for="fare" class="block text-sm font-medium text-gray-700">Fare</label>
+                              <input type="text" name="fare" id="fare" autocomplete="address-level1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                            <div class="col-span-6 sm:col-span-4 lg:col-span-3 pl-20 pr-5 background-color:bg-white" >
+                              <label for="days" class="block text-sm font-medium text-gray-700 pl-20" >Days</label>   
+
+<div class="col-span-6 sm:col-span-2 lg:col-span-1  py-1">
+  
+
+<ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="days" type="checkbox" value="Sun" name="days" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="sunday" class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sun</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="days" type="checkbox" value="Mon" name="days" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="monday" class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mon</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="days" type="checkbox" value="Tue" name="days" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="tuesday" class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tue</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+        <div class="flex items-center pl-3">
+            <input id="days" type="checkbox" value="Wed" name="days" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+            <label for="wednesday" class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Wed</label>
+        </div>
+    </li>
+    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+      <div class="flex items-center pl-3">
+          <input id="days" type="checkbox" value="Thu" name="days" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+          <label for="thursday" class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Thu</label>
+      </div>
+  </li>
+  <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+    <div class="flex items-center pl-3">
+        <input id="days" type="checkbox" value="Fri" name="days" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+        <label for="friday" class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fri</label>
+    </div>
+</li>
+<li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+  <div class="flex items-center pl-3">
+      <input id="days" type="checkbox" value="Sat" name="days" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+      <label for="saturday" class="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sat</label>
+  </div>
+</li>
+</ul>
+
+</div>
+                            </div>                              
+                                     
+<div>
+  
+</div>
+                            <div class=" pl-6 mb-7">
+                              <label class="block text-sm font-medium text-gray-700 p-3">Upload photo</label>
+                              <div class="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-0 pt-5 pb-6">
+                                <div class="space-y-1 text-center">
+                                  <svg class="mx-auto h-10 w-12 text-gray-400 " stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                  </svg>
+                                   <div class="flex text-sm text-gray-600 ">
+                                     <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500 p-3">
+                                      <span>Upload a file</span>
+                                      <input id="file-upload" name="picture" type="file" class="sr-only">
+                                    </label>
+                                    
+                                  </div>
+                                  
+                                </div>
+                                
+                              </div>
+                              
+                            </div>
+                            
+                            
+                            <div class="sumbitBox px-12  text-right sm:px-8 ">
+                              <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-4 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</button>
+                            </div>
+                            
+                               
+                              
+                          </div>
+                          
+                        </div>
+
+                        
+                        
+
+
+                       
+                         <%= message %> 
+                    </form>
+                  </div>
+               
+                  <div class="hidden sm:block" aria-hidden="true">
+                    <div class="py-4">
+                      <div class="border-t border-gray-200"></div>
+                    </div>
+                  </div>
+                  
+                 
+                </div>
+              
+          
+      </div>
+      
+   
+  </body>
+</html>

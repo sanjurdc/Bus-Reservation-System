@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+    
+    <link rel="stylesheet" href="/stylesheets/my.css"/>
+    
+    
+      <script src="/javascripts/project.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" defer></script>
+    <script src=" https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+  <% if(status==false) {%>
+    <h2><%= data %></h2>
+    <% } else { %>
+
+    <div class="relative overflow-x-auto">
+    <div class="updateBox">
+    <div style="font-size: 32px;font-weight: bold;"> List Of Buses</div></div>
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xl text-gray-700 uppercase bg-burlywood dark:bg-burlywood dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-3 py-3">
+                        BUS ID
+                    </th>
+                    <th scope="col" class="px-7 py-3">
+                        BUS NAME
+                    </th>
+                    <th scope="col" class="px-4 py-3">
+                        BUS NO
+                    </th>
+                    <th scope="col" class="px-10 py-3">
+                        SOURCE
+                    </th>
+                    <th scope="col" class="px-7 py-3">
+                        DESTINATION
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        DISTANCE
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        FARE
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        DAYS
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        PICTURE
+                    </th>
+                    <th scope="col" class="px-5 py-3">
+                        UPDATE
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map((item)=>{ %>
+         <tr>
+            <td scope="col" class="pl-8 py-3">
+                <%= item.busid %>
+            </td>
+            <td scope="col" class="pl-7 py-3">
+             <strong>   <%= item.busname %> </strong><br>
+                <%= item.busmodelname %><br>
+                <%= item.bustypename %>
+            </td>
+            <td scope="col" class="px-2 py-3">
+                <%= item.busnumber %>
+            </td>
+            <td scope="col" class="pl-7 py-3">
+              <strong>  <%= item.sourcestatename %></strong><br>
+                <%= item.sourcecityname %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+             <strong>   <%= item.destinationstatename %> </strong><br>
+                <%= item.destinationcityname %>
+            </td>
+            <td scope="col" class="px-12 py-3">
+                <%= item.distance %>
+                
+            </td >
+            <td scope="col" class="px-7 py-3">
+                
+                <%= item.fare %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+                
+                <%= item.days %>
+            </td>
+            <td scope="col" class="px-7 py-3">
+              <button type="button" class="btnpicture" redbus="<%= JSON.stringify(item) %>">
+               <img src="/images/<%= item.picture %>" width="60" style="border-radius: 20px;">
+              </button> 
+            </td>
+            <td scope="col" class="px-7 py-3" >
+                
+               <input type= "button" value="Edit" redbus="<%= JSON.stringify(item) %>" class="btnedit bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+             
+            </td>
+         </tr>
+            <%    }) %>
+            </tbody>
+        </table>
+          
+          <!-- Modal Structure -->
+
+
+  <div id="modal1" class="modal" style="width: 85%;height: 1800px;">
+    <div class="modal-header">
+      <a class="btn-floating btn-small "><i class="material-icons btnclose">close</i></a>
+  </div>
+    <div class="modal-content">
+      
+        <div class="modalContainer">
+        
+            <div class=" md:col-span-5  ">
+              <p style="font-size: 32px;font-weight: bold; background-color:wheat;padding-left: 12px;"> Bus Interface</p>
+     
+      
+        <input type= "hidden" id="busid"  >
+          <div class="modcontainer">
+            <div class="grid grid-cols-6  ">
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-5 py-2">
+                <label for="stateid" class="block text-sm font-medium text-gray-700"> State </label>
+                <select name="stateid" id="stateid" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+               
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-4 py-2">
+                <label for="cityid" class="block text-sm font-medium text-gray-700"> City </label>
+                <select name="cityid" id="cityid" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-4 py-2">
+                <label for="bustypeid" class="block text-sm font-medium text-gray-700">Bus Type</label>
+                <select name="bustypeid" id="bustypeid" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-5 py-1">
+                <label for="busnames" class="block text-sm font-medium text-gray-700">Bus Name</label>
+                <select name="busnames" id="busnames" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+                 
+              </div>
+                
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-4 py-2">
+                <label for="busmodel" class="block text-sm font-medium text-gray-700">Bus Model</label>
+                <select name="busmodel" id="busmodel" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 lg:col-span-2 px-5 py-1">
+                <label for="busnumber" class="block text-sm font-medium text-gray-700">Bus Number</label>
+                <input type="text" name="busnumber" id="busnumber" autocomplete="street-address" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 px-5 ">
+                <label for="sourcestate" class="block text-sm font-medium text-gray-700">Source State</label>
+                <select name="sourcestate" id="sourcestate" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 px-5 ">
+                <label for="sourcecity" class="block text-sm font-medium text-gray-700">Source City</label>
+               <select name="sourcecity" id="sourcecity" style="width: 100%;">
+                <option value=""disable selected>Choose Your Option</option>
+              </select>
+             </div>
+
+              <div class="col-span-6 sm:col-span-3 px-5 py-3">
+                <label for="destinationstate" class="block text-sm font-medium text-gray-700">Destination State</label>
+                <select name="destinationstate" id="destinationstate" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+              </div>
+
+              <div class="col-span-6 sm:col-span-3 px-5 py-3">
+                <label for="destinationcity" class="block text-sm font-medium text-gray-700">Destination City</label>
+                <select name="destinationcity" id="destinationcity" style="width: 100%;">
+                  <option value=""disable selected>Choose Your Option</option>
+                </select>
+                 </div>
+              <div class="col-span-6 sm:col-span-4 lg:col-span-1 pl-5 " style="width: 100%;">
+                <label for="distance" class="block text-sm font-medium text-gray-700">Distance</label>
+                <input type="text" name="distance" id="distance" autocomplete="address-level1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+              </div>
+              <div class="col-span-6 sm:col-span-4 lg:col-span-1 pl-5 " style="width: 100%;">
+                <label for="fare" class="block text-sm font-medium text-gray-700">Fare</label>
+                <input type="text" name="fare" id="fare" autocomplete="address-level1" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+              </div>
+              <div class="col-span-6 sm:col-span-4 lg:col-span-3 pl-20 pr-5 background-color:bg-white" >
+                <label for="days" class="block text-sm font-medium text-gray-700 pl-20" >Days</label>   
+
+<div class="col-span-6 md:col-span-2 lg:col-span-1  py-4">
+
+
+  <label style="padding-right: 10px;">
+    <input type="checkbox" class="days" name="days" value="Mon"/>
+    <span style="padding-left: 20px;">Mon</span>
+  </label>
+  <label style="padding-right: 10px;">
+    <input type="checkbox" class="days" name="days" value="Tue" />
+    <span style="padding-left: 20px;"> Tue</span>
+  </label>
+  <label style="padding-right: 10px;">
+    <input type="checkbox" class="days" name="days" value="Wed"/>
+    <span style="padding-left: 20px;">Wed</span>
+  </label>
+  <label style="padding-right: 10px;">
+    <input type="checkbox" class="days" name="days" value="Thu"/>
+    <span style="padding-left: 20px;">Thu</span>
+  </label>
+  <label style="padding-right: 10px;">
+    <input type="checkbox" class="days" name="days" value="Fri"/>
+    <span style="padding-left: 20px;">Fri</span>
+  </label>
+  <label style="padding-right: 10px;">
+    <input type="checkbox" class="days" name="days" value="Sat"/>
+    <span style="padding-left: 20px;">Sat</span>
+  </label>
+  <label >
+    
+    <input type="checkbox" class="days" name="days" value="Sun" />
+    <span style="padding-left: 20px;">Sun</span>
+  </label>
+  
+
+  
+
+       </div>
+              </div>                              
+                       
+       
+              
+              <div class="sumBox pb-6  text-left sm:px-8 ">
+               
+                <button id="updbtn" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-4 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Update</button>
+             
+              </div>
+              <div class="closeBox pb-6  text-left sm:px-8 ">
+                
+                <button id="delbtn" class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-4 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Delete</button>
+              
+              </div>
+              
+
+ <!-- Open Delete Modal toggle -->
+ 
+ 
+ <div id="deletemodal"  class=" top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+     <div class="relative w-full h-full max-w-md md:h-auto">
+         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+             <button type="button" id="close" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="popup-modal">
+                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                 <span  class="sr-only">Close modal</span>
+             </button>
+             <div class="p-6 text-center">
+                 <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this bus details?</h3>
+                 <button id="deletebtn" data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                     Yes, I'm sure
+                 </button>
+                 <button id="closebtn" data-modal-hide="popup-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
+             </div>
+         </div>
+     </div>
+ </div>
+ 
+ 
+   <!-- End Delete Modal toggle -->
+
+  
+             </div>
+          </div>
+       
+    </div>
+  
+  </div>
+  
+  
+
+</div>
+ 
+
+</div>
+
+</div>
+
+</div>
+
+
+    
+
+
+
+
+        <%    } %>
+  
+ </div>   
+<!-- Open Picture Modal Structure -->
+
+
+<div id="picturedialog" class="modal">
+  <div class="modal-header">
+    <a class="btn-floating btn-small "><i class="material-icons btnclose">close</i></a>
+</div>
+  <div class="modal-content">
+  <center>  <div id="title" style="font-size: 24px;font-weight: bold;">
+  </div></center><br>
+   <div class="pic"> <img id="bpicture" width="300px" >
+    
+    <div class="uplPic">
+    <div class=" max-w-xl">
+      <label
+          class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+          <span class="flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+              </svg>
+              <span class="font-medium text-gray-600">
+                  Drop files to Attach, or
+                  <span class="text-blue-600 underline">browse</span><br>
+                  <input required type="file" id="picture">
+              </span>
+          </span>
+          <input type="file"   name="file_upload" class="hidden">
+      </label>
+  </div>
+  
+</div> <br><br>
+
+  </div><div class="button">
+  <button class="btn waves-effect waves-light" type="submit" id="uploadpicture">Submit
+    <i class="material-icons right">send</i>
+  </button>
+</div>
+  </div>
+
+</div>
+  <!-- Close Picture Modal Structure -->
+ 
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src=" https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script>
+    
+    $(document).ready(function(){
+        $('.modal').modal();
+        $('.btnedit').click(function(){
+          
+            $('#modal1').modal('open')
+
+            $('.btnclose').click(function(){
+           
+           $('#modal1').modal('close')
+
+            })
+
+            var item=JSON.parse($(this).attr('redbus'))
+
+              alert(item.stateid)
+            
+              $('#stateid').formSelect(); 
+            $('#stateid').append($('<option>').text(item.statename).val(item.stateid))
+            $('#stateid').val(item.stateid)
+             
+           
+            
+                 //   cityid    //
+
+                 
+    $.getJSON(`http://localhost:3000/bus/fetch_all_cityid`,{'stateid':item.stateid}, function(data){
+        $('#cityid').empty()
+        $('#cityid').append($('<option>').text('Choose Your Option'))
+        data.cityid.map((item)=>{
+           
+    $('#cityid').append($('<option>').text(item.cityname).val(item.cityid))
+
+        })
+        $('#cityid').val(item.cityid)
+        $('#cityid').formSelect();
+    })
+
+              
+            
+                $('#bustypeid').append($('<option>').text(item.bustypename).val(item.bustypeid))
+                $('#bustypeid').val(item.bustypeid)
+                $('#busnames').append($('<option>').text(item.busname).val(item.busnameid))
+                    $('#busnames').val(item.busnameid)
+                    $('#busmodel').append($('<option>').text(item.busmodelname).val(item.busmodelid))
+                $('#busmodel').val(item.busmodelid)
+                $('#sourcestate').append($('<option>').text(item.sourcestatename).val(item.sourcestateid))
+                $('#sourcestate').val(item.sourcestateid)
+                $('#sourcecity').append($('<option>').text(item.sourcecityname).val(item.sourcecityid));
+                    $('#sourcecity').val(item.sourcecityid)
+                    $('#destinationstate').append($('<option>').text(item.destinationstatename).val(item.destinationstateid))
+                    $('#destinationstate').val(item.destinationstateid)
+                $('#destinationcity').append($('<option>').text(item.destinationcityname).val(item.destinationcityid));
+                    $('#destinationcity').val(item.destinationcityid)
+
+                    $('#busnumber').val(item.busnumber)
+                    $('#distance').val(item.distance)
+                    $('#fare').val(item.fare)
+                    $('#days').val(item.days)
+                    var db=JSON.stringify(item.days)
+                    var days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+                    $('.days').map(function(){
+                      if(db.includes($(this).val()))
+                      {
+                        $(this).attr('checked',true)
+                      }
+                    })
+                    $('#busid').val(item.busid) 
+                         // input type is hidden 
+                      console.log(item.busid)
+
+            $('#stateid').formSelect();
+            
+            $('#cityid').formSelect();
+            $('#bustypeid').formSelect();
+            $('#busnames').formSelect();
+            $('#busmodel').formSelect();
+            $('#sourcestate').formSelect();
+            $('#sourcecity').formSelect();
+            $('#destinationstate').formSelect();
+            $('#destinationcity').formSelect();
+           
+            
+
+                    
+            
+
+        })
+        $('#updbtn').click(function(){
+
+                    var newdays=[]
+                    $('.days').map(function(){
+                      if($(this).prop('checked'))
+                      {newdays.push($(this).val())}
+                      
+                    })
+
+
+
+
+
+             $.getJSON('/bus/updatebus',{stateid:$('#stateid').val(), 
+             cityid:$('#cityid').val(),
+             bustypeid:$('#bustypeid').val(),
+             busnames:$('#busnames').val(),
+             busmodel:$('#busmodel').val(),
+             busnumber:$('#busnumber').val(),
+             sourcestate:$('#sourcestate').val(),
+             sourcecity:$('#sourcecity').val(),
+             destinationstate:$('#destinationstate').val(),
+             destinationcity:$('#destinationcity').val(),
+             distance:$('#distance').val(), 
+             fare:$('#fare').val(),
+             busid:$('#busid').val(),
+             days:newdays,
+             },function(data){
+               alert(data.message)
+              window.location.reload('/bus/update_all_bus')
+              
+             })
+              
+            })
+
+            ///      delete button ////
+
+            $('#delbtn').click(function(){
+
+             $('#deletemodal').show()
+              $('#closebtn').click(function(){
+           
+           $('#deletemodal').hide()
+
+            })
+
+            $('#close').click(function(){
+           
+           $('#deletemodal').hide()
+
+             })
+
+              $('#deletebtn').click(function(){
+
+                $.getJSON('/bus/deletebus',{
+             busid:$('#busid').val()},function(data){
+               alert(data.message)
+              window.location.reload('/bus/update_all_bus')
+              
+             })
+
+
+
+
+})  
+             
+              
+            })  
+          
+
+            //     end delete button   ///
+
+            // picture button ///
+ 
+           
+            $('.btnpicture').click(function(){
+              
+              $('.btnclose').click(function(){
+           
+           $('#picturedialog').modal('close')
+              })
+              
+               $('#picturedialog').modal('open')
+               var item=JSON.parse($(this).attr('redbus'))
+               $('#title').html(`Bus ${item.busname}`)
+               $('#bpicture').attr('src',`/images/${item.picture}`)
+
+            })
+
+            // End picture button //
+            // Open Update Picture //
+
+            $('#uploadpicture').click(function(){
+              alert('hello')
+              var formData= new FormData();
+              formData.append("busid",$('#busid').val())
+              var files=$('#picture')[0].files;
+
+              // check file selected or not //
+
+              if(files.length > 0 )
+              {
+                formData.append('picture',files[0])
+
+                /// ajax /////
+
+                $.ajax({
+                  url:'http://localhost:3000/bus/buspictureupdate',
+                  type:'post',
+                  
+                  contentType:false,
+                  data:formData,
+                  processData:false,
+                  success:function(response){
+                    alert(response.status)
+                    window.location.reload('/bus/update_all_bus')
+                  }
+            
+                })
+              }
+              else
+              {
+                  alert("Please Select a File ...")
+              }
+            })
+    })
+
+
+    
+</script>
+</html>  
